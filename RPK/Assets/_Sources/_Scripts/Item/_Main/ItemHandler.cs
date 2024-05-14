@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CircleCollider2D))]
 public class ItemHandler : MonoBehaviour
 {
     [SerializeField] private Item item;
+    [SerializeField] private int count;
 
     private void Start()
     {
@@ -15,11 +17,16 @@ public class ItemHandler : MonoBehaviour
             return;
         }
 
+        GetComponent<Collider2D>().isTrigger = true;
         GetComponentInChildren<SpriteRenderer>().sprite = item.Sprite;
     }
     public Item GetItem()
     {
         return item;
     }
+    public int GetCount()
+    {
+        return count;
+    }    
     public void Kill() => Destroy(gameObject);
 }

@@ -22,8 +22,8 @@ public class PlayerMove : MonoBehaviour
     }
     private void Move()
     {
-        InputX = Input.GetAxis("Horizontal") * speedWalk * Time.fixedDeltaTime;
-        InputY = Input.GetAxis("Vecrtical") * speedWalk * Time.fixedDeltaTime;
+        InputX = Input.GetAxis("Horizontal");
+        InputY = Input.GetAxis("Vertical");
 
         SetVelocity(new Vector2(InputX, InputY) * GetSpeed());
         SetRotationZ(InputX * -rotationSpeed);
