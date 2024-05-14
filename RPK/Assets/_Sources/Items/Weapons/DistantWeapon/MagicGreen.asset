@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263c950ae1c97e4499fcba01077d8fe3, type: 3}
+  m_Name: MagicGreen
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 537476641, guid: f5599cd4fac81004182007610fd0ebd0, type: 3}
+  isStack: 1
+  isEquip: 1
+  type: 2
+  damage: 10
+  speedAttack: 7
+  reloadTime: 3
+  lifeTimeBullet: 6
+  bulletPrefab: {fileID: 7759444581923483080, guid: 3a9b5be1de38d3f4a9a7b7a02b25a87d, type: 3}
+  addSpeed: 0
+  addEndurance: 0
+  addProtection: 0
+  addMana: 0
+  healthRecovery: 0
+  enduranceRecovery: 0
+  manaRecovery: 0
