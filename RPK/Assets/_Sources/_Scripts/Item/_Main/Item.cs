@@ -8,6 +8,7 @@ public class Item : ScriptableObject
     [SerializeField] private bool isStack;
     [SerializeField] private bool isEquip;
     [SerializeField] private TypeItem type;
+    public int addCount;
     [Header("Weapon")]
     [SerializeField] private float damage;
     [SerializeField] private float speedAttack;
