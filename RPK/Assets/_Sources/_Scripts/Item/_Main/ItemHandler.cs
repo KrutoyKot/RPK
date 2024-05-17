@@ -6,7 +6,7 @@ using UnityEngine;
 public class ItemHandler : MonoBehaviour
 {
     [SerializeField] private Item item;
-    [SerializeField] private int count;
+    [SerializeField, Range(1, 64)] private int count;
 
     private void Start()
     {

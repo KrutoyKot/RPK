@@ -34,6 +34,8 @@ namespace Player
         }
         private void RefreshUI()
         {
+            InitilizationUI();
+
             var hasItem = HasItem();
 
             _cellImage.sprite = hasItem ? _item.Sprite : nullSprite;
@@ -42,8 +44,8 @@ namespace Player
         private void InitilizationUI()
         {
             if(_cellBackGroundImage == null) _cellBackGroundImage = GetComponent<Image>();
-            if(_cellImage) _cellImage = transform.GetChild(0).GetComponent<Image>();
-            if(_itemCountText) _itemCountText = transform.GetChild(1).GetComponent<Text>();
+            if(_cellImage == null) _cellImage = transform.GetChild(0).GetComponent<Image>();
+            if(_itemCountText == null) _itemCountText = transform.GetChild(1).GetComponent<Text>();
         }
     }
 }

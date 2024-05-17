@@ -9,12 +9,19 @@ namespace Player
 
         private void Start()
         {
-            
+
         }
 
-        public void AddItem(ItemHandler item)
+        public void AddItem(Item item, int count = 1)
         {
-            cells[0].AddItem(item.GetItem(), item.GetCount());
+            for (int i = 0; i < cells.Count; i++)
+            {
+                if (cells[i].HasItem() == false)
+                {
+                    cells[i].AddItem(item, count);
+                    return;
+                }
+            }
         }
     }
 }

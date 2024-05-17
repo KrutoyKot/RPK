@@ -1,15 +1,20 @@
 using Player;
 using UnityEngine;
 
+[RequireComponent(typeof(Inventory))]
 public class Interectable : MonoBehaviour
 {
-    [SerializeField] private CellInventory cell;
-    [SerializeField] private Item item;
+    private Inventory _inventory;
+    private void Start()
+    {
+        _inventory = GetComponent<Inventory>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerMove player))
+        if (collision.TryGetComponent(out ItemHandler item))
         {
-            cell.AddItem(item, item.addCount);
+            _inventory.AddItem(item.GetItem(), item.GetCount());
+            Destroy(item.gameObject);
         }
     }
 }
