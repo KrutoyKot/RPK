@@ -6,10 +6,10 @@ public class PanelControll : MonoBehaviour
     [SerializeField] private GameObject panelMagic;
     [SerializeField] private GameObject panelInfo;
 
-    private bool isPanel = true;
+    private bool isPanel;
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && isPanel == false)
         {
             panelInventory.SetActive(true);
             isPanel = true;
@@ -18,20 +18,26 @@ public class PanelControll : MonoBehaviour
     }
     private void PanelActive()
     {
-        if(isPanel && Input.GetKeyDown(KeyCode.Alpha1))
+        if (isPanel && Input.GetKeyDown(KeyCode.Alpha1))
         {
-            panelInventory.SetActive(true);
-            isPanel = false;
+            panelInfo.SetActive(false);
+            panelMagic.SetActive(false);
         }
-        else if(isPanel && Input.GetKeyDown(KeyCode.Alpha2))
+        else if (isPanel && Input.GetKeyDown(KeyCode.Alpha2))
         {
+            panelInfo.SetActive(false);
             panelMagic.SetActive(true);
-            isPanel = false;
-        }        
-        else if(isPanel && Input.GetKeyDown(KeyCode.Alpha3))
+        }
+        else if (isPanel && Input.GetKeyDown(KeyCode.Alpha3))
         {
             panelInfo.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab) && isPanel)
+        {
+            panelInventory.SetActive(false);
+            panelInfo.SetActive(false);
+            panelMagic.SetActive(false);
             isPanel = false;
-        }   
+        }
     }
 }
