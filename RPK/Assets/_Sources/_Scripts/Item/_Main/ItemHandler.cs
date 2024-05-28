@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
@@ -10,7 +8,7 @@ public class ItemHandler : MonoBehaviour
 
     private void Start()
     {
-        if(item == null)
+        if (item == null)
         {
             Debug.LogWarning($"Item Destroy: {gameObject.name}");
             Kill();
@@ -27,6 +25,10 @@ public class ItemHandler : MonoBehaviour
     public int GetCount()
     {
         return count;
-    }    
+    }
+    public void SetCount(int countItem)
+    {
+        count = countItem;
+    }
     public void Kill() => Destroy(gameObject);
 }

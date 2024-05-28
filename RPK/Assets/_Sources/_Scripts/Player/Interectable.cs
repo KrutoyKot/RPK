@@ -13,8 +13,14 @@ public class Interectable : MonoBehaviour
     {
         if (collision.TryGetComponent(out ItemHandler item))
         {
-            _inventory.AddItem(item.GetItem(), item.GetCount());
-            Destroy(item.gameObject);
+            if (_inventory.AddItem(item.GetItem(), item.GetCount()))
+            {
+                Destroy(item.gameObject);
+            }
+            else
+            {
+                item.SetCount(_inventory.ostatok);
+            }
         }
     }
 }

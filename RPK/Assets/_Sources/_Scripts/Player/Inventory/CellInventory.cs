@@ -32,6 +32,14 @@ namespace Player
         {
             return _item;
         }
+        public int GetCount()
+        {
+            return _count;
+        }
+        public void SetCount(int countItem)
+        {
+            _count = countItem;
+        }
         private void RefreshUI()
         {
             InitilizationUI();

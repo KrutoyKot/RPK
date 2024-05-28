@@ -9,10 +9,11 @@ public class PanelControll : MonoBehaviour
     private bool isPanel;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && isPanel == false)
+        if (Input.GetKeyDown(KeyCode.E) && isPanel == false)
         {
             panelInventory.SetActive(true);
             isPanel = true;
+            return;
         }
         PanelActive();
     }
@@ -32,7 +33,7 @@ public class PanelControll : MonoBehaviour
         {
             panelInfo.SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.Tab) && isPanel)
+        else if (Input.GetKeyDown(KeyCode.E) && isPanel)
         {
             panelInventory.SetActive(false);
             panelInfo.SetActive(false);
