@@ -9,6 +9,7 @@ namespace Player
 
         public int ostatok;
 
+        private int _lastItemRemanions;
         private int maxItemCountCells = 64;
 
         private void Start()
@@ -18,17 +19,21 @@ namespace Player
 
         public bool AddItem(Item item, int count = 1)
         {
+            int countItem = item.IsStack ? count : 1;
+
             if (item.IsStack)
             {
                 for (int i = 0; i < cells.Count; i++)
                 {
-                    var max = cells[i].GetCount() + count;
                     if (item == cells[i].GetItem())
                     {
+                        var max = cells[i].GetCount() + count;
                         if (max > maxItemCountCells)
                         {
-                            ostatok = max - maxItemCountCells;
+                            _lastItemRemanions = max - maxItemCountCells;
                             cells[i].SetCount(maxItemCountCells);
+                            countItem = _lastItemRemanions;
+                            _lastItemRemanions = countItem;
                         }
                         else
                         {
@@ -48,6 +53,10 @@ namespace Player
             }
 
             return false;
+        }
+        public int GetLastRemations()
+        {
+            return _lastItemRemanions;
         }
     }
 }
