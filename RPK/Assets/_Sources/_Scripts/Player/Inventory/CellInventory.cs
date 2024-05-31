@@ -1,9 +1,10 @@
-using UnityEditor.Timeline.Actions;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Player
 {
+    [RequireComponent(typeof(Button))]
     public class CellInventory : MonoBehaviour
     {
         [SerializeField] private Sprite nullSprite;
@@ -13,9 +14,15 @@ namespace Player
         private Image _cellBackGroundImage;
         private Image _cellImage;
         private Text _itemCountText;
+        private Button _cellButton;
+
+        public static Action<CellInventory> OnClickCellEvent;
         private void Start()
         {
+            _cellButton = GetComponent<Button>();
             InitilizationUI();
+
+            _cellButton.onClick.AddListener(Select);
         }
 
         public void AddItem(Item item, int addCount)
@@ -23,6 +30,10 @@ namespace Player
             _item = item;
             _count += addCount;
             RefreshUI();
+        }
+        public void Select()
+        {
+            OnClickCellEvent?.Invoke(this);
         }
         public bool HasItem()
         {
@@ -39,6 +50,7 @@ namespace Player
         public void SetCount(int countItem)
         {
             _count = countItem;
+            RefreshUI();
         }
         private void RefreshUI()
         {

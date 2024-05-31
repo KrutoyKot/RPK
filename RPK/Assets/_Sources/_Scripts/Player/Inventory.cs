@@ -37,7 +37,7 @@ namespace Player
                         }
                         else
                         {
-                            cells[i].AddItem(item, count);
+                            cells[i].AddItem(item, countItem);
                             return true;
                         }
                     }
@@ -47,7 +47,7 @@ namespace Player
             {
                 if (cells[i].HasItem() == false)
                 {
-                    cells[i].AddItem(item, count);
+                    cells[i].AddItem(item, countItem);
                     return true;
                 }
             }

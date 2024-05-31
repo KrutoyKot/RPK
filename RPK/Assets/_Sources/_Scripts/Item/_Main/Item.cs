@@ -25,6 +25,10 @@ public class Item : ScriptableObject
     [SerializeField] private float healthRecovery;
     [SerializeField] private float enduranceRecovery;
     [SerializeField] private float manaRecovery;
+    [Space]
+    [Header("Info")]
+    [SerializeField] private string nameItem = "Item";
+    [SerializeField, TextArea (8,8)] private string description = "No description";
 
     public enum TypeItem
     {
@@ -62,4 +66,8 @@ public class Item : ScriptableObject
     public float HealthRecovery => healthRecovery;
     public float ManaRecovery => manaRecovery;
     public float EnduranceRecovery => enduranceRecovery;
+
+    public string NameItem => nameItem;
+
+    public string Description => description;
 }
