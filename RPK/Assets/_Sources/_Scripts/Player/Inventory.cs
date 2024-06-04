@@ -19,11 +19,12 @@ namespace Player
 
         public bool AddItem(Item item,int count = 1)
         {
-            if(item.isCoin)
+            if(item.Type == Item.TypeItem.Coin)
             {
                 coinManager.coinCounter = coinManager.coinCounter + count;
                 return true;
             }
+
             int countItem = item.IsStack ? count : 1;
 
             if (item.IsStack)

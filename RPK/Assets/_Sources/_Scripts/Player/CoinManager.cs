@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class CoinManager : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
-    [SerializeField]private Text _coinText;
+    [SerializeField]private Text coinText;
     
     public int coinCounter;
 
@@ -12,7 +12,7 @@ public class CoinManager : MonoBehaviour
     {
         if (panel.activeSelf == true)
         {
-            _coinText.text = coinCounter.ToString();
+            coinText.text = coinCounter.ToString();
         }
     }
 }

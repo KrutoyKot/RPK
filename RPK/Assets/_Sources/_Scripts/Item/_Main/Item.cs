@@ -9,7 +9,6 @@ public class Item : ScriptableObject
     [SerializeField] private bool isEquip;
     [SerializeField] private TypeItem type;
     public int addCount;
-    public bool isCoin;
     [Header("Weapon")]
     [SerializeField] private float damage;
     [SerializeField] private float speedAttack;
