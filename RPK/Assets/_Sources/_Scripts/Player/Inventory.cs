@@ -7,7 +7,7 @@ namespace Player
     {
         [SerializeField] private List<CellInventory> cells = new List<CellInventory>();
 
-        public int ostatok;
+        [SerializeField] private CoinManager coinManager;
 
         private int _lastItemRemanions;
         private int maxItemCountCells = 64;
@@ -17,8 +17,13 @@ namespace Player
 
         }
 
-        public bool AddItem(Item item, int count = 1)
+        public bool AddItem(Item item,int count = 1)
         {
+            if(item.isCoin)
+            {
+                coinManager.coinCounter = coinManager.coinCounter + count;
+                return true;
+            }
             int countItem = item.IsStack ? count : 1;
 
             if (item.IsStack)
