@@ -8,6 +8,11 @@ public class PanelInfoItem : MonoBehaviour
     [SerializeField] private Image cellItemImage;
     [SerializeField] private Text nameItem;
     [SerializeField] private Text descriptionItem;
+    [Space]
+    [SerializeField] private Button dropItemButton;
+    [SerializeField] private Button useItemButton;
+    [SerializeField] private Button sellItemButton;
+    [SerializeField] private Button takeOffItemButton;
 
     private CellInventory _lastSelectCell;
     private void OnEnable()
@@ -36,5 +41,9 @@ public class PanelInfoItem : MonoBehaviour
         cellItemImage.sprite = item ? item.Sprite : spriteNull;
         nameItem.text = item ? item.NameItem : "Имя предмета";
         descriptionItem.text = item ? item.Description : "Нажми на предмет";
+
+        dropItemButton.interactable = item;
+        useItemButton.interactable = item;
+        sellItemButton.interactable = item;
     }
 }

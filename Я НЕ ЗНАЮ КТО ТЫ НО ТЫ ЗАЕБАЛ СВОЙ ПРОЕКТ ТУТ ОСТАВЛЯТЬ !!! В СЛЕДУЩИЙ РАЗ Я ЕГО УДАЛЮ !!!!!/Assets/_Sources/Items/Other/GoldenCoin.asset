@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263c950ae1c97e4499fcba01077d8fe3, type: 3}
   m_Name: GoldenCoin
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 98026e9213c49a44ebfb6678c4f5db2b, type: 3}
+  sprite: {fileID: 2044139469, guid: ba00d2cc9cfe3aa4dbabe584112b29a8, type: 3}
   isStack: 1
   isEquip: 0
   type: 0
