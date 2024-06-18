@@ -13,34 +13,69 @@ public class PanelInfoItem : MonoBehaviour
     [SerializeField] private Button useItemButton;
     [SerializeField] private Button sellItemButton;
     [SerializeField] private Button takeOffItemButton;
+    [Space]
+    [SerializeField] private EquipmentInventoryPlayer equipment;
 
-    private CellInventory _lastSelectCell;
+    private ICell _lastSelectCell;
+
     private void OnEnable()
     {
-        CellInventory.OnClickCellEvent += ShowInfo;
+        ICell.OnClickCellEvent += ShowInfo;
     }
+
     private void OnDisable()
     {
-        CellInventory.OnClickCellEvent -= ShowInfo;
+        ICell.OnClickCellEvent -= ShowInfo;
     }
 
     private void Start()
     {
-        RefreshUI(null);
+        RefreshUI();
+        useItemButton.onClick.AddListener(Use);
+        dropItemButton.onClick.AddListener(Drop);
+        sellItemButton.onClick.AddListener(Sell);
     }
-    private void ShowInfo(CellInventory cell)
+
+    public void Use()
+    {
+        if (_lastSelectCell == null) return;
+        if (_lastSelectCell.Item == null) return;
+
+        var item = _lastSelectCell.Item;
+
+        if (item.Type == Item.TypeItem.Recovery)
+        {
+            //Add HP
+        }
+        else if (item.IsEquip)
+        {
+            equipment.Equip(_lastSelectCell);
+        }
+    }
+
+    public void Drop()
+    {
+
+    }
+
+    public void Sell()
+    {
+
+    }
+
+    private void ShowInfo(ICell cell)
     {
         var tempCell = _lastSelectCell == cell ? null : cell;
         _lastSelectCell = tempCell;
         RefreshUI(tempCell);
     }
 
-    private void RefreshUI(CellInventory cell = null)
+    private void RefreshUI(ICell cell = null)
     {
-        var item = cell ? cell.GetItem() : null;
+        var item = cell != null ? cell.Item : null;
         cellItemImage.sprite = item ? item.Sprite : spriteNull;
-        nameItem.text = item ? item.NameItem : "Имя предмета";
-        descriptionItem.text = item ? item.Description : "Нажми на предмет";
+        nameItem.text = item ? item.NameItem : "Name Item";
+        descriptionItem.text = item ? item.Description : "Click on a cell";
 
         dropItemButton.interactable = item;
         useItemButton.interactable = item;

@@ -1,45 +1,46 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Player
 {
     public class Inventory : MonoBehaviour
     {
+        [SerializeField] private int coinCount;
+        [SerializeField] private Text coinCountText;
         [SerializeField] private List<CellInventory> cells = new List<CellInventory>();
 
-        [SerializeField] private CoinManager coinManager;
-
-        private int _lastItemRemanions;
-        private int maxItemCountCells = 64;
+        private int _lastItemRemaions;
+        private int _maxItemCountCell = 64;
 
         private void Start()
         {
-
+            RefreshUI();
         }
 
-        public bool AddItem(Item item,int count = 1)
+        public bool AddItem(Item item, int count = 1)
         {
-            if(item.Type == Item.TypeItem.Coin)
+            int countItem = item.IsStack ? count : 1;
+
+            if (item.Type == Item.TypeItem.Coin)
             {
-                coinManager.coinCounter = coinManager.coinCounter + count;
+                coinCount += countItem;
+                RefreshUI();
                 return true;
             }
-
-            int countItem = item.IsStack ? count : 1;
 
             if (item.IsStack)
             {
                 for (int i = 0; i < cells.Count; i++)
                 {
-                    if (item == cells[i].GetItem())
+                    if (item == cells[i].Item)
                     {
-                        var max = cells[i].GetCount() + count;
-                        if (max > maxItemCountCells)
+                        if (cells[i].CountItem + countItem > _maxItemCountCell)
                         {
-                            _lastItemRemanions = max - maxItemCountCells;
-                            cells[i].SetCount(maxItemCountCells);
-                            countItem = _lastItemRemanions;
-                            _lastItemRemanions = countItem;
+                            _lastItemRemaions = cells[i].CountItem + countItem - _maxItemCountCell;
+                            cells[i].AddItem(item, countItem - _lastItemRemaions);
+                            countItem = _lastItemRemaions;
+                            _lastItemRemaions = countItem;
                         }
                         else
                         {
@@ -49,9 +50,10 @@ namespace Player
                     }
                 }
             }
+
             for (int i = 0; i < cells.Count; i++)
             {
-                if (cells[i].HasItem() == false)
+                if (cells[i].Item == false)
                 {
                     cells[i].AddItem(item, countItem);
                     return true;
@@ -60,9 +62,11 @@ namespace Player
 
             return false;
         }
-        public int GetLastRemations()
+
+        private void RefreshUI()
         {
-            return _lastItemRemanions;
+            coinCountText.text = $"{coinCount}$";
         }
+        public int GetLastItemRemaions() => _lastItemRemaions;
     }
 }

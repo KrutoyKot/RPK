@@ -40,7 +40,7 @@ public class Item : ScriptableObject
         Helmet = 3,
         Armor = 4,
         Trousers = 5,
-        Bots = 6,
+        Boots = 6,
         gloves = 7,
 
         Recovery = 8,

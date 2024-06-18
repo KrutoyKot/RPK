@@ -1,17 +1,28 @@
-using Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipmentInventoryPlayer : MonoBehaviour
+namespace Player
 {
-    [SerializeField] private List<CellEquipInventory> cellsEquip = new List<CellEquipInventory>();
-
-    public void Equip(CellInventory cell)
+    public class EquipmentInventoryPlayer : MonoBehaviour
     {
-        var item = cell ? cell.GetItem() : null;
-        if (item == null) return;
+        [SerializeField] private CellEquipInventory cellMeleeWeapon;
+        [SerializeField] private CellEquipInventory cellDistantWeapon;
+        [SerializeField] private CellEquipInventory cellHelmet;
+        [SerializeField] private CellEquipInventory cellArmor;
+        [SerializeField] private CellEquipInventory cellTrousers;
+        [SerializeField] private CellEquipInventory cellBoots;
 
-        //if(item.Type == )
+        public void Equip(ICell cell)
+        {
+            var item = cell != null ? cell.Item : null;
+            if (item == null) return;
+            if (item.IsEquip == false) return;
+
+            if (item.Type == Item.TypeItem.MeleeWeapon) cellMeleeWeapon.AddItem(item);
+            else if (item.Type == Item.TypeItem.DistantWeapon) cellDistantWeapon.AddItem(item);
+            else if (item.Type == Item.TypeItem.Helmet) cellHelmet.AddItem(item);
+            else if (item.Type == Item.TypeItem.Armor) cellArmor.AddItem(item);
+            else if (item.Type == Item.TypeItem.Trousers) cellTrousers.AddItem(item);
+            else if (item.Type == Item.TypeItem.Boots) cellBoots.AddItem(item);
+        }
     }
 }

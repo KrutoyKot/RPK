@@ -19,7 +19,7 @@ public class Interectable : MonoBehaviour
             }
             else
             {
-                if (item) item.SetCount(_inventory.GetLastRemations());
+                if (item) item.SetCount(_inventory.GetLastItemRemaions());
             }
         }
     }
