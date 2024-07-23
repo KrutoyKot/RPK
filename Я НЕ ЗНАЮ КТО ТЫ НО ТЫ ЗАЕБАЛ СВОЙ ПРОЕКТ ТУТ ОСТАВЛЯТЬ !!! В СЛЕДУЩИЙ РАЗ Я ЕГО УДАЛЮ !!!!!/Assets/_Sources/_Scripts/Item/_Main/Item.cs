@@ -12,10 +12,13 @@ public class Item : ScriptableObject
     [Header("Weapon")]
     [SerializeField] private float damage;
     [SerializeField] private float speedAttack;
+    [SerializeField] private GameObject prefabWeapon;
     [Header("DistantWeapon")]
     [SerializeField] private float reloadTime;
     [SerializeField] private float lifeTimeBullet;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float speedRotation;
+    [SerializeField] private float speedMoveBullet;
+    [SerializeField] private BulletDistanceWeaponBase bulletPrefab;
     [Header("Protection")]
     [SerializeField] private float addSpeed;
     [SerializeField] private float addEndurance;
@@ -55,9 +58,12 @@ public class Item : ScriptableObject
     public float Damage => damage;
     public float SpeedAttack => speedAttack;
 
+    public BulletDistanceWeaponBase BulletPrefab => bulletPrefab;
     public float ReloadTime => reloadTime;
     public float LifeTimeBullet => lifeTimeBullet;
-    public GameObject BulletPrefab => bulletPrefab;
+    public float SpeedRotation => speedRotation;
+    public float SpeedMoveBullet => speedMoveBullet;
+    public GameObject PrefabWeapon => prefabWeapon;
 
     public float AddProtection => addProtection;
     public float AddEndurance => addEndurance;

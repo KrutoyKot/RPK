@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 263c950ae1c97e4499fcba01077d8fe3, type: 3}
-  m_Name: MagicYellow
+  m_Name: Axe
   m_EditorClassIdentifier: 
-  sprite: {fileID: -1975763510, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
+  sprite: {fileID: -953232480, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
   isStack: 1
   isEquip: 1
-  type: 2
+  type: 1
   addCount: 0
-  damage: 5
-  speedAttack: 7
-  reloadTime: 3
-  lifeTimeBullet: 5
-  bulletPrefab: {fileID: 7759444581923483080, guid: 3a9b5be1de38d3f4a9a7b7a02b25a87d, type: 3}
+  damage: 3
+  speedAttack: 2
+  prefabWeapon: {fileID: 6507704193228174442, guid: 07f46596bad2ce54ea1bc10344898837, type: 3}
+  reloadTime: 1
+  lifeTimeBullet: 0
+  bulletPrefab: {fileID: 0}
   addSpeed: 0
   addEndurance: 0
   addProtection: 0

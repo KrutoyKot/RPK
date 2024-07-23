@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 263c950ae1c97e4499fcba01077d8fe3, type: 3}
-  m_Name: MagicYellow
+  m_Name: MagicGreen
   m_EditorClassIdentifier: 
-  sprite: {fileID: -1975763510, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
-  isStack: 1
+  sprite: {fileID: 38144712, guid: 83bf93558b0ec514a95bd6edcd67f7ac, type: 3}
+  isStack: 0
   isEquip: 1
   type: 2
   addCount: 0
-  damage: 5
+  damage: 10
   speedAttack: 7
+  prefabWeapon: {fileID: 9219169011715449087, guid: b55c9384f382beb4894aa5d7f89108a4, type: 3}
   reloadTime: 3
-  lifeTimeBullet: 5
-  bulletPrefab: {fileID: 7759444581923483080, guid: 3a9b5be1de38d3f4a9a7b7a02b25a87d, type: 3}
+  lifeTimeBullet: 20
+  speedRotation: 500
+  speedMoveBullet: 30
+  bulletPrefab: {fileID: 3945621054504680240, guid: 3a9b5be1de38d3f4a9a7b7a02b25a87d, type: 3}
   addSpeed: 0
   addEndurance: 0
   addProtection: 0

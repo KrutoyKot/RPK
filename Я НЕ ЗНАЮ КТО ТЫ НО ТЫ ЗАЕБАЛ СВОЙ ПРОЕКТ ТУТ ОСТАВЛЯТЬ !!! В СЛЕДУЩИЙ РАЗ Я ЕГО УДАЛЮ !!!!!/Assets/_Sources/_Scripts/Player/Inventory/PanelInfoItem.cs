@@ -15,6 +15,8 @@ public class PanelInfoItem : MonoBehaviour
     [SerializeField] private Button takeOffItemButton;
     [Space]
     [SerializeField] private EquipmentInventoryPlayer equipment;
+    [SerializeField] private PlayerAttacking playerAttacking;
+    [SerializeField] private Inventory inventory;
 
     private ICell _lastSelectCell;
 
@@ -34,6 +36,7 @@ public class PanelInfoItem : MonoBehaviour
         useItemButton.onClick.AddListener(Use);
         dropItemButton.onClick.AddListener(Drop);
         sellItemButton.onClick.AddListener(Sell);
+        takeOffItemButton.onClick.AddListener(TakeOff);
     }
 
     public void Use()
@@ -63,6 +66,22 @@ public class PanelInfoItem : MonoBehaviour
 
     }
 
+    public void TakeOff()
+    {
+        if (_lastSelectCell == null) return;
+        if (_lastSelectCell.Item == null) return;
+        if (_lastSelectCell.isEquipment == false) return;
+
+        if (inventory.AddItem(_lastSelectCell.Item))
+        {
+            _lastSelectCell.RemoveItem();
+        }
+
+        playerAttacking.TakeOff(_lastSelectCell);
+
+        RefreshUI();
+    }
+
     private void ShowInfo(ICell cell)
     {
         var tempCell = _lastSelectCell == cell ? null : cell;
@@ -77,8 +96,18 @@ public class PanelInfoItem : MonoBehaviour
         nameItem.text = item ? item.NameItem : "Name Item";
         descriptionItem.text = item ? item.Description : "Click on a cell";
 
+        var active = item != null ? cell.isEquipment == false : true;
+
         dropItemButton.interactable = item;
         useItemButton.interactable = item;
         sellItemButton.interactable = item;
+
+        dropItemButton.gameObject.SetActive(active);
+        useItemButton.gameObject.SetActive(active);
+        sellItemButton.gameObject.SetActive(active);
+
+        takeOffItemButton.gameObject.SetActive(!active);
+
+
     }
 }

@@ -15,6 +15,8 @@ namespace Player
         public Image CellImage { get; set; }
         public Button CellButton { get; set; }
 
+        public bool isEquipment { get; set; }
+
         private Text _itemCountText;
 
         private void Start()
@@ -44,6 +46,12 @@ namespace Player
 
             CellImage.sprite = hasItem ? Item.Sprite : nullSprite;
             _itemCountText.text = hasItem ? $"X{CountItem}" : null;
+        }
+        public void RemoveItem()
+        {
+            Item = null;
+            CountItem = 0;
+            RefreshUI();
         }
 
         public void InitializationUI()

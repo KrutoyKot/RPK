@@ -18,6 +18,8 @@ namespace Player
         public Image CellImage { get; set; }
         public Button CellButton { get; set; }
 
+        public bool isEquipment { get; set; } = true;
+
         private void Start()
         {
             CellButton = GetComponent<Button>();
@@ -35,6 +37,13 @@ namespace Player
         public void Select()
         {
             ICell.OnClickCellEvent?.Invoke(this);
+        }
+
+        public void RemoveItem()
+        {
+            Item = null;
+            CountItem = 0;
+            RefreshUI();
         }
 
         public void RefreshUI()
